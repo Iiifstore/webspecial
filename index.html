@@ -1,64 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>sok gaje teh sw sia</title>
-  <style>
-    body {
-      background-color: #fff0f5;
-      font-family: 'Courier New', Courier, monospace;
-      color: #e91e63;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  <title>Generative Love</title>
+  <link rel="stylesheet" href="./style.css">
 
-    #message-box {
-      background-color: #fff;
-      border: 2px solid #e91e63;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      font-size: 1.5em;
-      white-space: pre-wrap;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: #e91e63;
-      animation: blink 0.8s infinite;
-      margin-left: 3px;
-    }
-
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-  </style>
 </head>
 <body>
-  <div id="message-box">
-    <span id="text"></span><span class="cursor"></span>
-  </div>
+<!-- partial:index.partial.html -->
+<css-doodle grid="5">
+  :doodle {
+    @grid: 10 / 100%; 
+  }
+  background: @pick(
+    #ff0198, #8156a8, #ff6d00, #ff75e4
+  );
 
-  <script>
-    const message = `he anyingggggg 
+  transform: translate(
+    @rand(-50vw, 50vw),
+    @rand(-50vh, 50vh)
+  );
 
-sia ngien sw jg sh deihhhh ,mana tejelass deiiiii ngieennnn sw nnaaaaaaa `;
+  @size: 3.5vmin;
+  @shape: heart;
+  @place-cell: 50% 50%;
 
-    let i = 0;
-    function typeText() {
-      if (i < message.length) {
-        document.getElementById("text").innerHTML += message.charAt(i);
-        i++;
-        setTimeout(typeText, 50);
-      }
-    }
+  animation-name: explosion;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-duration: calc(@rand(2s, 5s, .1));
+  animation-delay: calc(@rand(-5s, -1s, .1));
+  animation-timing-function: 
+    cubic-bezier(.84, .02, 1, 1);
 
-    window.onload = typeText;
-  </script>
+  @keyframes explosion {
+    0% { opacity: 0; }
+    70% { opacity: 1; }
+    100% { transform: translate(0, 0); }
+  }
+</css-doodle>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.5.1/css-doodle.min.js'></script>
 </body>
 </html>
